@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load dajaxice_templatetags %}
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title>视频分享，梦的开始</title>
+    {% include 'widget/homemeta/css.html'  %}
+    {% include 'widget/homemeta/javascript.html'%}
+    {% dajaxice_js_import %}
+  </head>
+  <body >
+    <div class="container">
+     <div class='navbar navbar-inverse'>
+      <div class='navbar-inner nav-collapse'>
+        <ul class="nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="#">Page One</a></li>
+        <li><a href="#">Page Two</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="/account/userprofile/">{{user.username}}</a></li>
+        <li class="nav-li"><a href="/registration/logout" rel="tooltip" data-placement="bottom" data-original-title="离开">
+          <i class="icon-share icon-white"> </i></a>
+         </li>
+        {% else %}
+         <li><a href="/registration/login">Login</a></li>
+        {% endif %}
+        </ul>
+      </div>
+         </div>
+        <div class="github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+          <a href="#">{{user.username}}</a>
+        </div>
+        </div>
+      <div class="container"> 
+        <div class="row">
+            {% block content %}{% endblock %}
+        </div>
+      </div>
+      {% include 'widget/homemeta/footer.html' %}
+  </body>
+</html>

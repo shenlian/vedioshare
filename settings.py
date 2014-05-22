@@ -76,6 +76,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'dajaxice.finders.DajaxiceFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -86,7 +87,7 @@ SECRET_KEY = '=#nj($v4+)_=pu33ii26mm)k*j=n#&amp;*#-gd@afco#i_kd^_&amp;dh'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -95,6 +96,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 "django.core.context_processors.i18n",
 "django.core.context_processors.media",
 "django.core.context_processors.static",
+"django.core.context_processors.request",
 "django.core.context_processors.tz",
 "django.contrib.messages.context_processors.messages",
 )
@@ -105,6 +107,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -128,11 +131,40 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dajaxice',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    #myapp
+	'home',
 )
+
+#Uploadfile configuration
+FILE_UPLOAD_HANDLERS = (
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+)
+
+
+FILE_UPLOAD_TEMP_DIR = (
+    join(MEDIA_ROOT,'tmp')
+)
+
+#Email settings for 163 email 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+SERVER_EMAIL = "innovation_dut@163.com"
+EMAIL_SUBJECT_PREFIX = '[shenliandjangotest]'
+EMAIL_HOST = 'smtp.163.com'               
+EMAIL_PORT = '25'                         
+EMAIL_HOST_USER = 'innovation_dut@163.com'    
+EMAIL_HOST_PASSWORD = 'dutsie' 
+DEFAULT_FROM_EMAIL = 'innovation_dut@163.com'   
+EMAIL_USE_TLS = False
+
+#UserProfile
+# AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+#LOGIN_URL = '/registration/logout/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
