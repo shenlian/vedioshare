@@ -1,0 +1,61 @@
+div#footer{
+    text-align: center;
+}
+.yk-header{
+    height: 60px;
+    background: #f6f6f6;
+}
+.yk-header-container{
+    z-index: 1290;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+.yk-header-container .yk-box {
+z-index: 2;
+position: relative;
+width: 970px;
+height: 60px;
+margin: 0 auto;
+padding: 0 10px;
+}
+
+.yk-header-container .yk-logo {
+overflow: hidden;
+float: left;
+width: 300px;
+height: 50px;
+padding: 5px 0;
+margin-right: 20px;
+display:inline;
+}
+
+.yk-header .yk-so-box {
+z-index: 1100;
+position: relative;
+width: 320px;
+height: 40px;
+display:inline;
+}
+.yk-header .yk-so-box input{
+width: 230px;
+height: 40px;
+}
+
+.yk-header .yk-so-box button {
+cursor: pointer;
+overflow: hidden;
+position: absolute;
+width: 90px;
+height: 40px;
+margin: 0;
+padding: 0;
+outline: 0 none;
+border: 0 none;
+background-position: 0 -160px;
+}
+
+.yk-header .yk-so-box button{
+    background: transparent url("{{ STATIC_URL }}image/header/header.png") no-repeat;
+}
