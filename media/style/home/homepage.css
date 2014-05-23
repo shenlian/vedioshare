@@ -86,5 +86,7 @@ background-position: 0 -160px;
 .yk-userlogin{
 	width:150px;
 	display:inline;
-	padding:10px;
+}
+.yk-ucenter{
+    padding-top: 10px;
 }
