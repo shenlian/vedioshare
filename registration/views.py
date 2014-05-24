@@ -3,7 +3,7 @@
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 
 from registration.forms import RegistrationFormUniqueEmail
@@ -42,7 +42,7 @@ def register(request, success_url=None,
     if request.method == "POST":
         form = form_class(data=request.POST, files=request.FILES)
         if form.is_valid():
-#            new_user = form.save(request, profile_callback=profile_callback)
+            new_user = form.save(request, profile_callback=profile_callback)
             # success_url needs to be dynamically generated here; setting a
             # a default value using reverse() will cause circular-import
             # problems with the default URLConf for this application, which
@@ -51,7 +51,7 @@ def register(request, success_url=None,
             print form.cleaned_data["email"]
             print form.cleaned_data["password1"]
             print form.cleaned_data["password2"]
-#            return HttpResponseRedirect(success_url or reverse('registration_complete'))
+            return render(request,'registration/registration_complete.html')
     else:
         form = form_class()
 

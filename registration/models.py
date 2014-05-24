@@ -47,8 +47,8 @@ class RegistrationManager(models.Manager):
         return False
     @transaction.commit_on_success
     def create_inactive_user(self,request,
-                             username,password,email,
-                             Identity,send_email=True, profile_callback=None, **kwargs):
+                             username,password,email
+                            ,send_email=True, profile_callback=None, **kwargs):
         """
         Create a new, inactive ``User``, generates a
         ``RegistrationProfile`` and email its activation key to the
@@ -60,7 +60,7 @@ class RegistrationManager(models.Manager):
         #如果存在用户的话不必进行新建只需对权限表进行操作即可，否则新建用户
 #        loginfo("person_name:" + kwargs["person_name"])
 #        if User.objects.filter(email=email).count() == 0:
-#            new_user = User.objects.create_user(username, email, password)
+        new_user = User.objects.create_user(username, email, password)
 #            new_user.is_active = False
 #            new_user.save()
 #            registration_profile = self.create_profile(new_user)

@@ -1,8 +1,6 @@
 {% extends "registration/widgets/baseback.html" %}
 
 {%block form-content%}
-
-	<link href="{{STATIC_URL}}style/registration/login.css" type="text/css"  rel="stylesheet">
 	<form  class="form-signin form-horizontal" method="post" action="{% url auth_login %}?next=/">
 		{% csrf_token %}
 		<h2 class="login form-signin-heading ">Welcome To Login </h2>			

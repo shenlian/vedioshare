@@ -23,18 +23,18 @@ class RegistrationForm(forms.Form):
 
     email = forms.EmailField(label=_(u'邮箱地址'),
                              widget=forms.TextInput(
-                                 attrs={'placeholder':_(u'email address'),
+                                 attrs={'placeholder':_(u'邮箱'),
                                         "class":"email"}))
 
     password1 = forms.CharField(label=_(u'密码'),
                                 widget=forms.PasswordInput(
-                                    attrs={'placeholder':_(u'password'),
+                                    attrs={'placeholder':_(u'密码'),
                                         "class":"required"},
                                     render_value=False))
 
     password2 = forms.CharField(label=_(u'确认密码'),
                                 widget=forms.PasswordInput(
-                                    attrs={'placeholder':_(u'password(again)'),
+                                    attrs={'placeholder':_(u'再次输入密码'),
                                         "class":"required"},
                                     render_value=False))
     
