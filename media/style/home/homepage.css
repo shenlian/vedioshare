@@ -90,3 +90,17 @@ background-position: 0 -160px;
 .yk-ucenter{
     padding-top: 10px;
 }
+
+div#footer{
+    width:100%;
+	position:absolute;
+	bottom:0px;
+	background:#E9E7D3;
+	height:50px;
+    text-align:center;
+}
+
+div#bodycontent{
+    margin-top:30px;
+    margin-bottom:30px;
+}
