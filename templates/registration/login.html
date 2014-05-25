@@ -1,7 +1,7 @@
 {% extends "registration/widgets/baseback.html" %}
 
 {%block form-content%}
-	<form  class="form-signin form-horizontal" method="post" action="{% url auth_login %}?next=/">
+	<form  class="form-signin form-horizontal" method="post" action="{% url auth_login %}?next={%url auth_login_redirect%}">
 		{% csrf_token %}
 		<h2 class="login form-signin-heading ">Welcome To Login </h2>			
     <br/>

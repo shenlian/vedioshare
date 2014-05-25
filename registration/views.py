@@ -2,13 +2,14 @@
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 
 from registration.forms import RegistrationFormUniqueEmail
 from registration.models import RegistrationProfile
-#from backend.decorators import check_auth
+from backend.decorators import check_auth
+from const import *
 
 
 def active(request, activation_key,
@@ -73,15 +74,11 @@ def login_redirect(request):
     authorities, the system will jump randomly
     """
     #TODO: I will use reverse function to redirect, like school and expert
-    if check_auth(request.user, SCHOOL_USER):
-        return HttpResponseRedirect(reverse('school.views.home_view'))
-    elif check_auth(request.user, EXPERT_USER):
-        return HttpResponseRedirect(reverse('expert.views.home_view'))
-    elif check_auth(request.user, ADMINSTAFF_USER):
-        return HttpResponseRedirect('/adminStaff/')
-    elif check_auth(request.user, STUDENT_USER):
-        return HttpResponseRedirect('/student/')
-    elif check_auth(request.user, TEACHER_USER):
-        return HttpResponseRedirect('/teacher/')
+    if check_auth(request.user, ADMINSTAFF_USER):
+        return HttpResponseRedirect('/admin/')
+    elif check_auth(request.user, NORMAL_USER):
+        return HttpResponse('/normaluser/')
+    elif check_auth(request.user, VISITOR_USER):
+        return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')

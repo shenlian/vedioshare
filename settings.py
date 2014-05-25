@@ -139,6 +139,10 @@ INSTALLED_APPS = (
     #myapp
 	'home',
 	'registration',
+    'const',
+    'adminstaff',
+    'normal',
+    'users',
 )
 
 #Uploadfile configuration
