@@ -93,7 +93,7 @@ background-position: 0 -160px;
 
 div#footer{
     width:100%;
-	position:relative;
+	position:fixed;
 	bottom:0px;
 	background:#E9E7D3;
 	height:50px;

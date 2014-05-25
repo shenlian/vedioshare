@@ -77,7 +77,7 @@ def login_redirect(request):
     if check_auth(request.user, ADMINSTAFF_USER):
         return HttpResponseRedirect('/admin/')
     elif check_auth(request.user, NORMAL_USER):
-        return HttpResponse('/normaluser/')
+        return HttpResponseRedirect('/normal/')
     elif check_auth(request.user, VISITOR_USER):
         return HttpResponseRedirect('/')
     else:
