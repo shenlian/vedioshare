@@ -17,6 +17,7 @@ from backend.logging import logger,loginfo
 
 from const import *
 from const.models import UserIdentity
+from users.models import NormalProfile
 SHA1_RE = re.compile('^[a-f0-9]{40}$')      #Activation Key
 
 class RegistrationManager(models.Manager):
@@ -86,6 +87,9 @@ class RegistrationManager(models.Manager):
         else:
 			new_user = User.objects.get(email=email)
 
+#        创建普通用户NORMALUSER Profile
+        new_normalprofile = NormalProfile(userid = new_user)
+        new_normalprofile.save()
 #        对用户权限写入数据库
         new_authority = UserIdentity.objects.get(identity=NORMAL_USER)
         new_authority.auth_groups.add(new_user)
