@@ -1,0 +1,27 @@
+<div class="navbar ">
+<<<<<<< HEAD
+	<div class="navbar-inner">
+		<a class="brand" href="/">首页</a>
+    	<ul class="nav">
+      		<li><a href="/normal/">个人主页</a></li>
+      		<li class="divider-vertical"></li>
+      		<li><a href="/normal/upload">上传文件</a></li>
+      		<li class="divider-vertical"></li>
+      		<li><a href="">个人信息</a></li>
+      		<li class="divider-vertical"></li>
+    	</ul>
+  	</div><!--end navbar inner -->
+</div><!--end navbar--> 
+=======
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li><a href="">主页</a></li>
+      <li class="divider-vertical"></li>
+      <li><a href="">上传文件</a></li>
+      <li class="divider-vertical"></li>
+      <li><a href="">个人信息</a></li>
+      <li class="divider-vertical"></li>
+    </ul>
+  </div><!--end navbar inner -->
+</div><!--end navbar--> 
+>>>>>>> ca1e08b6d5a5865522ef7f7292f7ba2744d8565f
