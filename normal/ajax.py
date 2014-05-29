@@ -16,8 +16,10 @@ def FileDeleteConsistence(request, nid, fid):
     """
     logger.info("sep delete files"+"**"*10)
     # check mapping relation
-    f = get_object_or_404(VideoSubmisson, file_id=fid)
-    n = get_object_or_404(NormalProfile, id=nid)
+    print "delete"
+    f = VideoSubmisson.objects.get(file_id=fid)
+    print "haha"
+    n = NormalProfile.objects.get(id=nid)
 
     logger.info(f.normalfile_id.id)
     logger.info(n.id)
@@ -27,7 +29,9 @@ def FileDeleteConsistence(request, nid, fid):
                                  "message": "Authority Failed!!!"})
 
     if request.method == "POST":
+        print "delete in"
         f.delete()
+        print "delete end"
         return simplejson.dumps({"is_deleted": True,
                                  "message": "delete it successfully!",
                                  "fid": str(fid)})

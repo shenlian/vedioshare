@@ -2,6 +2,7 @@ $('[rel="file_delete"]').click(function(){
   
   var nid = $(this).attr("nid");
   var fid = $(this).attr("fid");
+  alert(nid);
   Dajaxice.normal.FileDeleteConsistence(file_delete_callback,
                                         {'nid':nid, 'fid':fid});
 });

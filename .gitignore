@@ -1,6 +1,7 @@
 #developer file
 *.pyc
 *.swp
+*.swo
 *~
 
 #uploadfile
