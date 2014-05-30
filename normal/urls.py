@@ -13,4 +13,5 @@ urlpatterns = patterns('',
          # that way it can return a sensible "invalid key" message instead of a confusing 404
 					   url(r'^$',normal_views.index,name='normal_index'),
 					   url(r'^upload$',normal_views.upload,name='normal_upload'),
+					   url(r'^accountsetting$',normal_views.accountsetting,name='normal_accountsetting'),
         )

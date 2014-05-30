@@ -6,6 +6,7 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from backend.utility import handle_uploaded_file
 from backend.logging import loginfo
 from users.models import *
+from users.form import NormalUserForm
 from normal.form import *
 from normal.models import *
 from normal.utility import upload_save_process,upload_preimage
@@ -32,4 +33,28 @@ def upload(request):
 		   }
     return render(request,'normal/upload.html',data)
 
-
+def accountsetting(request):
+    normalprofile = NormalProfile.objects.get(userid = request.user)
+    if request.method =="POST":
+        print "haha"
+        normalUserForm = NormalUserForm(request.POST,instance = normalprofile)
+        if normalUserForm.is_valid():
+            normalUserForm.save()
+            print "hha"
+            return HttpResponseRedirect('/normal/')
+        else:
+            print normalUserForm.errors
+    else:
+        normalUserForm = NormalUserForm(instance=normalprofile)
+    
+    data = {
+        'normalUserForm':normalUserForm,
+    }
+    return render(request,'normal/accountsetting.html',data)
+def replay(request,pid):
+    video = VideoSubmisson.objects.get(file_id = pid )
+    print pid
+    data = {
+        'video':video,
+    }
+    return render(request,'replay/replay.html',data)

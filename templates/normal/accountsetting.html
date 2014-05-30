@@ -1,0 +1,14 @@
+{% extends "normal/widget/base.html" %}
+
+{% block calculate-content%}
+<form enctype="multipart/form-data" method="POST""  action="/normal/accountsetting"  id="accountsetting">
+	{% csrf_token %}
+	<span class="alert">用户名：<strong>{{user.username}}<strong></span>
+	<BR>
+	<BR>
+	{{normalUserForm.telephone.label}}
+	{{normalUserForm.telephone}}
+	<br/>
+	<input type="SUBMIT" class="btn-primary btn" value="保存"></input>
+</form>
+{% endblock %}

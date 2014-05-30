@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^normal/', include('normal.urls')),
     url(r'^registration/',include('registration.urls'),),
     url(dajaxice_config.dajaxice_url,include('dajaxice.urls')),
+	url(r'^replay/(?P<pid>.{36})$','normal.views.replay',name = "replay"),
 )
 # for develop to serve user-upload content in MEDIA_ROOT
 if settings.DEBUG:

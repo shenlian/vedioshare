@@ -35,7 +35,9 @@
     {%for item in filehistory %}
 	<tr id="{{item.file_id}}">
 	  <td>
-		  <image style="height:100px;width:100px;" src="{{ STATIC_URL }}{{item.videopreimage.file_obj}}"></image>	
+		  <a href = "/replay/{{item.file_id}}">	
+			  <image style="height:100px;width:100px;" src="{{ STATIC_URL }}{{item.videopreimage.file_obj}}"></image>
+		  </a>
 	  </td>
       <td>{{item.name}}</td>
       <td>{{item.file_type}}</td>
