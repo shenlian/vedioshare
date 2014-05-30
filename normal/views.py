@@ -4,10 +4,11 @@ from django.shortcuts import render_to_response, render
 
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect 
 from backend.utility import handle_uploaded_file
+from backend.logging import loginfo
 from users.models import *
 from normal.form import *
 from normal.models import *
-from normal.utility import upload_save_process
+from normal.utility import upload_save_process,upload_preimage
 def index(request):
     return render(request,'normal/normalhome.html')
 
@@ -15,8 +16,14 @@ def upload(request):
     normalprofile = NormalProfile.objects.get(userid = request.user)
     filehistory = VideoSubmisson.objects.filter( normalfile_id = normalprofile)
     if request.method=="POST":
-        upload_save_process(request,normalprofile)
-        print request.POST['title']
+        obj = upload_save_process(request,normalprofile)
+        loginfo(p=normalprofile,label="obj")
+        print obj.file_id
+        preimage = upload_preimage(request,obj)
+        print "test obj"
+        print obj.videopreimage.file_id
+        print "test pre"
+        print preimage.video_id.file_id 
         return HttpResponseRedirect('/normal/')
         
     data = {
@@ -24,4 +31,5 @@ def upload(request):
             "normalid":normalprofile.id,
 		   }
     return render(request,'normal/upload.html',data)
+
 

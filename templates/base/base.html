@@ -24,7 +24,7 @@
           <div class="yk-ucenter span4">
               {% if user.is_authenticated %}
               <div class="yk-userlogin">
-                  <a class="btn btn-primary" href="/account/userprofile/"><i class="icon-user icon-white"></i>{{user.username}}</a>
+                  <a class="btn btn-primary" href="/normal/"><i class="icon-user icon-white"></i>{{user.username}}</a>
               </div>
               <div class="yk-userlogin">
                   <a class="btn btn-primary" href="/registration/logout"><i class="icon-remove icon-white"></i>注销</a>
@@ -47,7 +47,7 @@
     {%comment%}
     <div class="github-fork-ribbon-wrapper right">
       <div class="github-fork-ribbon">
-        <a href="#">{{user.username}}</a>
+        <a href="/normal/">{{user.username}}</a>
       </div>
     </div>
     {% endcomment %}

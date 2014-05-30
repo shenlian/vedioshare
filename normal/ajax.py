@@ -1,5 +1,6 @@
 # Create your views here.
 # coding: UTF-8
+import os
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
 from django.utils import simplejson
@@ -29,8 +30,24 @@ def FileDeleteConsistence(request, nid, fid):
                                  "message": "Authority Failed!!!"})
 
     if request.method == "POST":
-        print "delete in"
-        f.delete()
+        try:
+			currenturl = os.path.dirname(os.path.abspath('__file__'))
+			fileurl = str(f.file_obj)
+			filepath = currenturl+'/media/'+fileurl
+#            if f.video_id_set.all():
+#                preimage = f.video_id_set.all()[0]
+#                preimageurl = str(preimage.file_obj)
+#                preimagepath = currenturl + '/media/' + preimageurl	
+#                os.remove(preimagepath)
+			preimage = f.videopreimage.file_obj
+			print preimage
+			preimageurl = str(preimage)
+			preimagepath = currenturl + '/media/' + preimageurl
+			os.remove(preimagepath)
+			os.remove(filepath)
+        except Exception,e:
+        	print e
+		f.delete()
         print "delete end"
         return simplejson.dumps({"is_deleted": True,
                                  "message": "delete it successfully!",

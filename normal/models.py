@@ -36,7 +36,7 @@ class VideoPreImage(models.Model):
     file_id = models.CharField(max_length=50,
                                primary_key=True, default=lambda:str(uuid.uuid4()),
                                verbose_name="文件上传唯一ID")
-    video_id = models.ForeignKey(VideoSubmisson)
+    video_id = models.OneToOneField(VideoSubmisson)
     file_obj = models.FileField(upload_to=datetime.datetime.now().strftime('uploadfile/preimage/%m-%Y'),
                                 verbose_name="文件对象")
     uploadtime = models.DateTimeField(blank=True, null=True,

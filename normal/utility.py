@@ -15,7 +15,6 @@ from backend.logging import loginfo
 
 def upload_save_process(request,normalprofile):
 	f = request.FILES["video"]
-	pic = request.FILES["pic"]
 	name = request.POST["title"]
 	wrapper_f = UploadedFile(f)
 	filename = wrapper_f.name
@@ -31,18 +30,24 @@ def upload_save_process(request,normalprofile):
 	obj.file_type = filetype if filetype != " " else "unknown"
 	try:		
 		obj.save()
-	except BaseException,e:
+	except Exception,e:
 		loginfo(p=e,label="error")
+	loginfo(p=obj,label="obj")
+	return obj
 
-	pic_obj = VideoPreImage()
-	pic_obj.file_obj = pic
-	pic_obj.vedio_id = obj
-	pic_obj.uploadtime = time.strftime('%Y-%m-%d %X', time.localtime(time.time()))
-	try:		
+def upload_preimage(request,obj):
+	pic = request.FILES["pic"]
+	print obj.file_id
+	try:	
+		pic_obj = VideoPreImage()
+		pic_obj.file_obj = pic
+		pic_obj.video_id = obj
+		pic_obj.uploadtime = time.strftime('%Y-%m-%d %X', time.localtime(time.time()))
 		pic_obj.save()
-	except BaseException,e:
-		loginfo(p=e,label="error")
-#    save_preimage_process(request,obj)
+		loginfo(p=obj,label="obj")
+	except Exception,e:
+		print e
+	return pic_obj
 
 def save_preimage_process(request,videofile):
 	"""
@@ -58,7 +63,6 @@ def save_preimage_process(request,videofile):
 	count = 0  	
 	while success:
 		cv2.imshow("Oto video",frame)
-		print "haha"
 		count = count + 1
 		if count == 2000:
 			print "2000"
