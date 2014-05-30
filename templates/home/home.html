@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<table class="table table-hover table-striped" >
+  <thead>
+    <tr>
+      <td>预览图片</td>
+      <td>名称</td>
+      <td>类型</td>
+      <td>大小</td>
+      <td>上传时间</td>
+    </tr>
+  </thead>
+  <tbody>
+    {%for item in filehistory %}
+    <tr id="{{item.file_id}}">
+      <td>
+          <a href = "/replay/{{item.file_id}}"> 
+              <image style="height:100px;width:100px;" src="{{ STATIC_URL }}{{item.videopreimage.file_obj}}"></image>
+          </a>
+      </td>
+      <td>{{item.name}}</td>
+      <td>{{item.file_type}}</td>
+      <td>{{item.file_size}}</td>
+      <td>{{item.uploadtime}}</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{% endblock %}

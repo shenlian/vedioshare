@@ -6,7 +6,7 @@
  Created Time: 2014年05月28日 星期三 10时15分30秒
 '''
 import time
-import cv2
+# import cv2
 import os
 
 from django.core.files.uploadedfile import UploadedFile

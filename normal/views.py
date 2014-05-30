@@ -3,6 +3,7 @@
 from django.shortcuts import render_to_response, render
 
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect 
+from django.contrib.auth.decorators import login_required
 from backend.utility import handle_uploaded_file
 from backend.logging import loginfo
 from users.models import *
@@ -10,22 +11,37 @@ from users.form import NormalUserForm
 from normal.form import *
 from normal.models import *
 from normal.utility import upload_save_process,upload_preimage
+@login_required()
 def index(request):
-    return render(request,'normal/normalhome.html')
+    normalprofile = NormalProfile.objects.get(userid = request.user)
+    filehistory = VideoSubmisson.objects.filter( normalfile_id = normalprofile)
+        
+    data = {
+            "filehistory":filehistory,
+            "normalid":normalprofile.id,
+           }
 
+    return render(request,'normal/normalhome.html',data)
+
+
+@login_required()
 def upload(request):
     normalprofile = NormalProfile.objects.get(userid = request.user)
     filehistory = VideoSubmisson.objects.filter( normalfile_id = normalprofile)
     if request.method=="POST":
-        obj = upload_save_process(request,normalprofile)
-        loginfo(p=normalprofile,label="obj")
-        print obj.file_id
-        preimage = upload_preimage(request,obj)
-        print "test obj"
-        print obj.videopreimage.file_id
-        print "test pre"
-        print preimage.video_id.file_id 
-        return HttpResponseRedirect('/normal/')
+        try:
+            print "hahahah"
+            obj = upload_save_process(request,normalprofile)
+            loginfo(p=normalprofile,label="obj")
+            print obj.file_id
+            preimage = upload_preimage(request,obj)
+            print "test obj"
+            print obj.videopreimage.file_id
+            print "test pre"
+            print preimage.video_id.file_id 
+            return HttpResponseRedirect('/normal/')
+        except Exception, e:
+            print e
         
     data = {
 		   	"filehistory":filehistory,

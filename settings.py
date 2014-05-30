@@ -169,7 +169,7 @@ EMAIL_USE_TLS = False
 
 #UserProfile
 # AUTH_PROFILE_MODULE = 'accounts.UserProfile'
-#LOGIN_URL = '/registration/logout/'
+LOGIN_URL = '/registration/login/'
 ACCOUNT_ACTIVATION_DAYS = 7
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

@@ -38,7 +38,7 @@
               </div>         
               {% endif %}
               <div class="yk-userlogin">
-                  <a class="btn btn-primary" href="#"><i class="  icon-download-alt icon-white"></i>上传</a>
+                  <a class="btn btn-primary" href="{% if user.is_authenticated %} /normal/upload/ {% else %} /registration/login {% endif %}"><i class="  icon-download-alt icon-white"></i>上传</a>
               </div>
           </div>
         </div>
