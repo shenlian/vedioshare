@@ -143,6 +143,8 @@ INSTALLED_APPS = (
     'adminstaff',
     'normal',
     'users',
+	#manage mysql
+	'south',
 )
 
 #Uploadfile configuration

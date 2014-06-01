@@ -7,4 +7,7 @@
 
 #uploadfile
 media/uploadfile/*
-media/tmp/*
+media/tmp/* 
+
+#South 
+*/migrations/

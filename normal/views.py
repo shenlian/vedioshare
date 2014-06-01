@@ -15,7 +15,11 @@ from normal.utility import upload_save_process,upload_preimage
 def index(request):
     normalprofile = NormalProfile.objects.get(userid = request.user)
     filehistory = VideoSubmisson.objects.filter( normalfile_id = normalprofile)
-        
+    if request.META.has_key('HTTP_X_FORWARDED_FOR'):  
+        ip =  request.META['HTTP_X_FORWARDED_FOR']  
+    else:  
+        ip = request.META['REMOTE_ADDR'] 
+	print ip
     data = {
             "filehistory":filehistory,
             "normalid":normalprofile.id,
@@ -30,15 +34,8 @@ def upload(request):
     filehistory = VideoSubmisson.objects.filter( normalfile_id = normalprofile)
     if request.method=="POST":
         try:
-            print "hahahah"
             obj = upload_save_process(request,normalprofile)
-            loginfo(p=normalprofile,label="obj")
-            print obj.file_id
             preimage = upload_preimage(request,obj)
-            print "test obj"
-            print obj.videopreimage.file_id
-            print "test pre"
-            print preimage.video_id.file_id 
             return HttpResponseRedirect('/normal/')
         except Exception, e:
             print e

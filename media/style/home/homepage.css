@@ -4,6 +4,9 @@ div#footer{
 .yk-header{
     height: 60px;
     background: #f6f6f6;
+	position:fixed;
+	width:100%;
+	top:0px;
 }
 .yk-header-container{
     z-index: 1290;

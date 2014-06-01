@@ -13,7 +13,7 @@
       <div class="yk-header-container">
         <div class="yk-box control-group">
           <div class="yk-logo"> 
-          	<a href="" title="Youku 优酷" attr="idx0"><img src="{{ STATIC_URL }}image/header/yklogo.png" alt="Youku 优酷" from="index"></a>
+          	<a href="/" title="Youku 优酷" attr="idx0"><img src="{{ STATIC_URL }}image/header/yklogo.png" alt="Youku 优酷" from="index"></a>
           </div>
     			<div class="yk-header-search span4">
     				<form class="form-search">
@@ -38,12 +38,13 @@
               </div>         
               {% endif %}
               <div class="yk-userlogin">
-                  <a class="btn btn-primary" href="{% if user.is_authenticated %} /normal/upload/ {% else %} /registration/login {% endif %}"><i class="  icon-download-alt icon-white"></i>上传</a>
+                  <a class="btn btn-primary" href="{% if user.is_authenticated %} /normal/upload {% else %} /registration/login {% endif %}"><i class="  icon-download-alt icon-white"></i>上传</a>
               </div>
           </div>
         </div>
       </div>
     </div>
+	{% include 'base/features_item_navbar.html'  %}
     {%comment%}
     <div class="github-fork-ribbon-wrapper right">
       <div class="github-fork-ribbon">

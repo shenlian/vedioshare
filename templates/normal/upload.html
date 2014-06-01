@@ -10,11 +10,17 @@
 	  <input type="text" name="title" style="margin-top:5px;">
 	  <br>
 	  <span class="success">预览图片:</span>
-      <input type="file"  style="filter:alpha(opacity=0);padding:0px;border:0px;margin:0px;" size="1" hidefocus enctype="multipart/form-data" name="pic" / >
+      <input type="file"  style="filter:alpha(opacity=0);padding:0px;border:0px;margin:0px;" accept="image/*"  size="1" hidefocus enctype="multipart/form-data" name="pic" / >
 	  <br>
 	  <span class="success">上传视频:</span>
- 	  <input type="file"  style="filter:alpha(opacity=0);padding:0px;border:0px;margin:0px;" size="1" hidefocus enctype="multipart/form-data" name="video" / >
+ 	  <input type="file"  style="filter:alpha(opacity=0);padding:0px;border:0px;margin:0px;"  size="1" hidefocus enctype="multipart/form-data" name="video" / >
 	  <br>
+	  <select name="content_type">
+		  <option value="music">音乐</option>
+		  <option value="game">游戏</option>
+		  <option value="movie">电影</option>
+ 		  <option value="tv">电视剧</option>
+	  </select>
 	  <button type="submit" class="btn btn-success start" style="margin-right:20px;width:100px; float:right;" rel="fileupload_operation">
         <i class="icon-upload icon-white"></i>
         <span>上传</span>
@@ -40,7 +46,7 @@
 		  </a>
 	  </td>
       <td>{{item.name}}</td>
-      <td>{{item.file_type}}</td>
+      <td>{{item.get_content_type_display}}</td>
       <td>{{item.file_size}}</td>
 	  <td>{{item.uploadtime}}</td>
       <td>

@@ -16,6 +16,8 @@ from backend.logging import loginfo
 def upload_save_process(request,normalprofile):
 	f = request.FILES["video"]
 	name = request.POST["title"]
+	content_type = request.POST["content_type"]
+	print content_type
 	wrapper_f = UploadedFile(f)
 	filename = wrapper_f.name
 	filetype = filename.split(".")[1]
@@ -25,6 +27,7 @@ def upload_save_process(request,normalprofile):
 	obj.normalfile_id = normalprofile
 	obj.uploadtime = time.strftime('%Y-%m-%d %X', time.localtime(time.time()))
 	obj.file_type = filetype
+	obj.content_type = content_type
 	obj.file_size = wrapper_f.file.size
 	#TODO: we will check file type
 	obj.file_type = filetype if filetype != " " else "unknown"

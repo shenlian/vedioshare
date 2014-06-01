@@ -5,6 +5,7 @@ import os
 import datetime
 from django.db import models
 from users.models import NormalProfile
+from const import CONTENTTYPE_CHOICES
 # Create your models here.
 
 class VideoSubmisson(models.Model):
@@ -22,13 +23,17 @@ class VideoSubmisson(models.Model):
                                  default=None, verbose_name="文件大小")
     file_type = models.CharField(max_length=50, blank=True, null=True,
                                  default=None, verbose_name="文件类型")
+    content_type = models.CharField(max_length=50, blank=True, null=True,choices=CONTENTTYPE_CHOICES,
+                                 default=None, verbose_name="文件类型")
 
     class Meta:
-        verbose_name = "文件上传"
-        verbose_name_plural = "文件上传"
+        verbose_name = "视频上传"
+        verbose_name_plural = "视频上传"
 
     def __unicode__(self):
-        return self.normalfile_id.userid
+        return self.name + "(" + str(self.normalfile_id.userid) + ")"
+    def display(self):
+        return self.name + "(" + str(self.normalfile_id.userid) + ")"
     def file_name(self):
         return os.path.basename(self.file_obj.name)
 
@@ -41,4 +46,12 @@ class VideoPreImage(models.Model):
                                 verbose_name="文件对象")
     uploadtime = models.DateTimeField(blank=True, null=True,
                                       verbose_name="上传时间")
+    class Meta:
+        verbose_name = "预览图像上传"
+        verbose_name_plural = "预览图像上传"
+
+    def __unicode__(self):
+        return self.video_id.display() 
+    def file_name(self):
+        return os.path.basename(self.file_obj.name)
    

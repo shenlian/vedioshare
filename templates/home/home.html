@@ -5,9 +5,9 @@
 <div class="row-fluid">
 	<div class = "span8">
     {%for item in filehistory %}
-	<div class="span4">
+	<div style="float:left;margin-right:30px;margin-bottom:30px;"> 
     	<a href = "/replay/{{item.file_id}}"> 
-			  <image style="height:110px;width:200px;" alt="{{item.name}}"  src="{{ STATIC_URL }}{{item.videopreimage.file_obj}}"></image>
+			  <image style="height:150px;width:220px;" alt="{{item.name}}"  src="{{ STATIC_URL }}{{item.videopreimage.file_obj}}"></image>
 		</a>
 	</div>
 	{%endfor%}

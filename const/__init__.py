@@ -14,3 +14,17 @@ AUTH_CHOICES = (
     (NORMAL_USER, u"普通用户"),
     (VISITOR_USER, u"游客"),
 )
+
+# For ContentType Table
+CONTENTTYPE_MUSIC  = "music"
+CONTENTTYPE_GAME  = "game"
+CONTENTTYPE_MOVIE  = "movie"
+CONTENTTYPE_TV  = "tv"
+
+CONTENTTYPE_CHOICES = (
+    (CONTENTTYPE_MUSIC, u"音乐"),
+    (CONTENTTYPE_GAME, u"游戏"),
+    (CONTENTTYPE_MOVIE, u"电影"),
+    (CONTENTTYPE_TV, u"电视"),
+)
+
