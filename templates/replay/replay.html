@@ -3,11 +3,17 @@
 
 {% block content %}
 <div style="text-align:center">
+    <h2>{{video.name}}</h2>
 	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="500" height="400">
 		<param name="movie" value="{{STATIC_URL}}flvplayer.swf" />
 		<param name="quality" value="high" />
 		<param name="allowFullScreen" value="true" />
 		<embed src="{{STATIC_URL}}flvplayer.swf" allowfullscreen="true" flashvars="vcastr_file={{STATIC_URL}}{{video.file_obj}}&IsAutoPlay=1&DefaultVolume=80&IsShowTime=1" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="960" height="540"></embed>
-	</object>
+    </object>
+    <!-- ShareTo Button BEGIN -->
+    <br>
+    <a href="http://www.shareto.org/share.html" class="shareto_button"><img src="http://www.shareto.org/img/lg-share-cn.gif" width="125" height="21" alt="分享到" style="border:0"/></a>
+    <script type="text/javascript" src="http://www.shareto.org/js/shareto_button.js" charset="utf-8"></script>
+    <!-- ShareTo Button END -->
 </div>
 {% endblock %}
