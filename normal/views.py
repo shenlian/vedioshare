@@ -70,4 +70,4 @@ def replay(request,pid):
     data = {
         'video':video,
     }
-    return render(request,'replay/replay.html',data)
+    return render(request,'replay/test.html',data)
