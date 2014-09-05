@@ -3,7 +3,7 @@
 
 {% block content %}
 <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}style/home/show.css">
-<div class="clearfix">
+<div class="clearfix-inner">
     {% for item in filehistory %}
       <div class="box photo col3">
         <a href="/replay/{{item.file_id}}" title="{{ item.name }}"><img src="{{ STATIC_URL }}{{item.videopreimage.file_obj}}"  /></a>
