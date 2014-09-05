@@ -5,9 +5,13 @@ from django.template import RequestContext
 
 from normal.models import *
 
+import datetime
+
 def index(request):
-    filehistory = VideoSubmisson.objects.all()
+    filehistory = VideoSubmisson.objects.order_by('name').all()
+    year = datetime.datetime.now().year
     data = {
         'filehistory':filehistory,
+        'year': year,
     }
     return render(request,'home/home.html',data) 
