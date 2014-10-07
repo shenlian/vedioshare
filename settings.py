@@ -8,6 +8,8 @@ ADMINS = (
     ('shenlian', '1019947054@qq.com'),
 )
 
+
+
 MANAGERS = ADMINS
 
 DATABASES = {
